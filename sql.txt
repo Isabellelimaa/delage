@@ -1,0 +1,12 @@
+create table dbo.Importacao(
+idImportacao int primary key identity,
+dataRgst datetime not null,
+)
+
+create table dbo.Produto(
+idProduto int primary key identity,
+idImportacao int foreign key references Importacao,
+codProduto int not null,
+codBarrasProduto varchar(max) not null,
+descProduto varchar(max) not null,
+)

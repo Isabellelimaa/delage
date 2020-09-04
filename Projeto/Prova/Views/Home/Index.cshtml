@@ -1,0 +1,36 @@
+﻿@using Prova.Models
+
+<div class="jumbotron">
+    <i class="glyphicon glyphicon-plus-sign"></i> @(((Entidade)ViewBag.Entidade).fantasia)
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="jumbotron produtos">
+            <h1>@ViewBag.Contador</h1>
+            <h3>Produtos</h3>
+        </div>
+    </div>
+    <div class="col-md-4">
+        @using (Html.BeginForm("EnviarProdutos", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <input type="file" name="postedFile" />
+            <input type="submit" id="btnUpload" value="Upload" />
+        }
+        <h2>Faça-nos uma visita</h2>
+        <p>
+            @(((Entidade)ViewBag.Entidade).Endereco.logradouro), @(((Entidade)ViewBag.Entidade).Endereco.numero)
+            @if (!string.IsNullOrEmpty((((Entidade)ViewBag.Entidade).Endereco.complemento)))
+            {@(((Entidade)ViewBag.Entidade).Endereco.complemento);
+            }
+        </p>
+        <p>@(((Entidade)ViewBag.Entidade).Endereco.bairro) - @(((Entidade)ViewBag.Entidade).Endereco.cidade) - @(((Entidade)ViewBag.Entidade).Endereco.uf)</p>
+        <p><a class="btn btn-default" href="http://gwww.delage.com.br">Visite nosso site &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Contato</h2>
+        <p>Entre em contato pelo nosso telefone ou mande-nos um email</p>
+        <p>(21) 2121-2121</p>
+        <p>contato@delage.com.br</p>
+    </div>
+</div>
